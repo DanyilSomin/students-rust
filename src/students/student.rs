@@ -1,7 +1,7 @@
 use chrono::*;
 use std::fmt;
 
-use crate::utils::ask_stdin_input;
+use crate::utils::{ask_stdin_input, is_valid_name};
 
 use super::idgenerator;
 
@@ -17,8 +17,8 @@ pub struct Student {
 impl Student {
     pub fn from_stdin() -> Self {
         return Student {
-            name: ask_stdin_input("Name"),
-            surname: ask_stdin_input("Surname"),
+            name: ask_user_valid_name("Name"),
+            surname: ask_user_valid_name("Surname"),
             birth_date: ask_user_birth_day(),
             id: idgenerator::generate_id(),
         };
@@ -92,6 +92,16 @@ fn ask_user_birth_day() -> NaiveDate {
                 continue;
             }
         };
+    }
+}
+
+fn ask_user_valid_name(str: &str) -> String {
+    loop {
+        let name = ask_stdin_input(str);
+
+        if is_valid_name(&name) {
+            return name;
+        }
     }
 }
 

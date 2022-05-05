@@ -38,7 +38,7 @@ pub fn as_table_to_stdout(students: Iter<'_, Student>) {
 
 pub fn ask_and_delete_by_id(students: &mut dyn Students) {
     loop {
-        let asked_string = ask_stdin_input("Id: ");
+        let asked_string = ask_stdin_input("Id");
 
         let id = match asked_string.parse::<usize>() {
             Ok(num) => num,

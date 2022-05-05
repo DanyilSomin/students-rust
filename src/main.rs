@@ -15,7 +15,7 @@ fn main() {
 
 fn ask_user_and_create_students() -> Box<dyn Students> {
     loop {
-        let asked_string = ask_stdin_input("Chose DB (vec/file)");
+        let asked_string = ask_stdin_input("Choose DB (vec/file)");
 
         match asked_string.as_str() {
             "vec" => return Box::from(StudentsVec::new()),
@@ -41,7 +41,7 @@ fn ask_user_and_open_from_file() -> Box<dyn Students> {
 fn main_loop(mut students: Box<dyn Students>) {
     loop {
         let asked_string =
-            ask_stdin_input("Chose command (add/delete/print/quit)");
+            ask_stdin_input("Choose command (add/delete/print/quit)");
 
         match asked_string.as_str() {
             "print" => students::as_table_to_stdout(students.all()),

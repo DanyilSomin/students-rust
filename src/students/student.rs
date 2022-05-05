@@ -83,7 +83,7 @@ fn ask_user_birth_day() -> NaiveDate {
         let birth_date_str =
             ask_stdin_input(&format!("Birth date ({})", &DATE_FORMAT));
 
-        return match NaiveDate::parse_from_str(
+        let date = match NaiveDate::parse_from_str(
             birth_date_str.as_str(),
             &DATE_FORMAT,
         ) {
@@ -92,6 +92,12 @@ fn ask_user_birth_day() -> NaiveDate {
                 continue;
             }
         };
+
+        if date > Utc::now().naive_utc().date() {
+            continue;
+        }
+
+        return date;
     }
 }
 

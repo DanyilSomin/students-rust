@@ -13,7 +13,7 @@ const NAME_COLUMN_WIDTH: usize = 25;
 const ID_COLUMN_WIDTH: usize = 5;
 const DATE_COLUMN_WIDTH: usize = 10;
 const TABLE_WIDTH: usize =
-    38 + NAME_COLUMN_WIDTH * 2 + ID_COLUMN_WIDTH + DATE_COLUMN_WIDTH;
+    42 + NAME_COLUMN_WIDTH * 2 + ID_COLUMN_WIDTH + DATE_COLUMN_WIDTH;
 
 pub trait Students {
     fn all(&self) -> Iter<'_, Student>;
@@ -26,7 +26,7 @@ pub fn as_table_to_stdout(students: Iter<'_, Student>) {
     println!("{}", "-".repeat(TABLE_WIDTH));
 
     for s in students {
-        println!("| Id: {:>id_width$} | Name: {:>name_width$} | Surname: {:>name_width$} | Date: {:>date_width$} |", 
+        println!("| Id: {:>id_width$} | Name: {:>name_width$} | Surname: {:>name_width$} | Birthday: {:>date_width$} |", 
             s.id(),
             s.name(),
             s.surname(),

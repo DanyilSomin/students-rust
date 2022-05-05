@@ -81,7 +81,7 @@ impl fmt::Display for Student {
 fn ask_user_birth_day() -> NaiveDate {
     loop {
         let birth_date_str =
-            ask_stdin_input(&format!("Birth date ({})", &DATE_FORMAT));
+            ask_stdin_input(&format!("Birthday ({})", &DATE_FORMAT));
 
         let date = match NaiveDate::parse_from_str(
             birth_date_str.as_str(),
